@@ -19,9 +19,9 @@
     ],
     "require": {
         "silverstripe/framework": "^4.0",
-        "silvershop/core": "^2.0",
+        "silvershop/core": "^3.0",
         "silverstripe/silverstripe-omnipay": "^2.0",
-        "omnipay/stripe": "^2.4"
+        "omnipay/stripe": ">=2.4"
     },
     "support": {
         "issues": "http://github.com/markguinn/silvershop-stripe/issues"
