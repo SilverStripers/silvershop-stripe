@@ -20,7 +20,7 @@
     "require": {
         "silverstripe/framework": "^4.0",
         "silvershop/core": "^3.0",
-        "silverstripe/silverstripe-omnipay": "^2.0",
+        "silverstripe/silverstripe-omnipay": "^3@dev",
         "omnipay/stripe": ">=2.4"
     },
     "support": {
