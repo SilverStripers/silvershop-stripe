@@ -2,7 +2,7 @@
 Name: shopbraintree
 ---
 Injector:
-  OnsitePaymentCheckoutComponent:
+  SilverShop\Checkout\Component\OnsitePayment:
     class: StripePaymentCheckoutComponent
 #GatewayInfo:
 #  Braintree:

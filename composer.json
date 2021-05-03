@@ -27,6 +27,9 @@
         "issues": "http://github.com/markguinn/silvershop-stripe/issues"
     },
     "extra": {
-        "installer-name": "silvershop-stripe"
+        "installer-name": "silvershop-stripe",
+        "expose": [
+            "javascript"
+        ]
     }
 }

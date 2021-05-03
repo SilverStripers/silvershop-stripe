@@ -7,6 +7,11 @@
  * @date    9.24.2016
  * @package silvershop-stripe
  */
+
+namespace MarkGuinn\SilverShopStripe;
+
+use SilverStripe\Forms\TextField;
+
 class StripeField extends TextField
 {
     protected $extraClasses = ['text'];

@@ -1,5 +1,17 @@
 <?php
+
+namespace MarkGuinn\SilverShopStripe;
+
+use Omnipay\Stripe\AbstractGateway;
+use Omnipay\Stripe\Gateway;
+use SilverShop\Checkout\Checkout;
+use SilverShop\Checkout\Component\OnsitePayment;
+use SilverShop\Model\Order;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\Form;
+use SilverStripe\Omnipay\Model\Payment;
 use SilverStripe\Omnipay\Service\PurchaseService;
+use SilverStripe\View\Requirements;
 
 /**
  * This replaces the default OnsitePaymentCheckoutComponent and uses stripe's checkout
@@ -13,7 +25,7 @@ use SilverStripe\Omnipay\Service\PurchaseService;
  * @date    9.24.2016
  * @package silvershop-stripe
  */
-class StripePaymentCheckoutComponent extends OnsitePaymentCheckoutComponent
+class StripePaymentCheckoutComponent extends OnsitePayment
 {
     /** @var bool - if for some reason the gateway is not actually stripe, fall back to OnsitePayment */
     protected $isStripe;
@@ -36,20 +48,20 @@ class StripePaymentCheckoutComponent extends OnsitePaymentCheckoutComponent
             );
             $service = PurchaseService::create($tempPayment);
             $this->gateway = $service->oGateway();
-            $this->isStripe = ($this->gateway instanceof \Omnipay\Stripe\Gateway);
+            $this->isStripe = ($this->gateway instanceof Gateway);
         }
 
         return $this->gateway;
     }
 
     /**
-     * @param \Omnipay\Common\AbstractGateway|\Omnipay\Stripe\Gateway $gateway
+     * @param AbstractGateway|Gateway $gateway
      * @return $this
      */
     public function setGateway($gateway)
     {
         $this->gateway = $gateway;
-        $this->isStripe = ($this->gateway instanceof \Omnipay\Stripe\Gateway);
+        $this->isStripe = ($this->gateway instanceof Gateway);
         return $this;
     }
 
@@ -99,7 +111,7 @@ class StripePaymentCheckoutComponent extends OnsitePaymentCheckoutComponent
 
         // Finally, add the javascript to the page
         Requirements::javascript('https://js.stripe.com/v2/');
-        Requirements::javascript('silvershop-stripe/javascript/checkout.js');
+        Requirements::javascript('markguinn/silvershop-stripe:javascript/checkout.js');
         Requirements::customScript("window.StripeConfig = " . json_encode($jsConfig), 'StripeJS');
 
         return $fields;

@@ -1,5 +1,10 @@
 <?php
 
+namespace MarkGuinn\SilverShopStripe\Tests;
+
+use MarkGuinn\SilverShopStripe\StripeField;
+use SilverStripe\Dev\SapphireTest;
+
 class StripeFieldTest extends SapphireTest
 {
     public function testHtmlDoesNotContainName()
